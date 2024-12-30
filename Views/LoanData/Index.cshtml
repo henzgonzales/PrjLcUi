@@ -1,0 +1,145 @@
+﻿@model PrjLcUi.Models.LoanDataModel
+
+@{
+    ViewData["Title"] = "LVR Calculator";
+}
+
+<h1>LVR CALCULATOR</h1>
+@* 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PropertyValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lvr)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoanAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lvr)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table> *@
+
+
+<form asp-action="Index">
+    <div class="row">
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="PropertyValue" class="control-label" style="width:300px;"></label>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+
+            <div class="row">
+               <div class="col-md-4">
+                    <div class="form-group">
+                        <input asp-for="PropertyValue" class="form-control" style="width:300px; height:30px; text-transform:uppercase;" maxlength="50" autocomplete="off" />
+                        <span asp-validation-for="PropertyValue" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-8"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <label asp-for="LoanAmount" class="control-label" style="width:300px;"></label>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input asp-for="LoanAmount" class="form-control" style="width:300px; height:30px; text-transform:uppercase;" maxlength="50" autocomplete="off" />
+                        <span asp-validation-for="LoanAmount" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-8"></div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="submit" value="Calculate" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="col-md-8"></div>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-6">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="PropertyValue" class="control-label" style="width:150px;">Property Value</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input value="@ViewData["PropertyValue"]" class="form-control" style="width:200px; height:30px; text-transform:uppercase;" maxlength="50" readonly="readonly" />
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="LoanAmount" class="control-label" style="width:150px;">Loan Amount</label>
+                </div>
+                <div class="col-md-8">
+                    <input value="@ViewData["LoanAmount"]" class="form-control" style="width:200px; height:30px; text-transform:uppercase;" maxlength="50" readonly="readonly" />
+                </div>
+            </div>
+            <hr />
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="Lvr" class="control-label" style="width:150px;">LVR</label>
+                </div>
+                <div class="col-md-8">
+                    <input value="@ViewData["LVR"]" class="form-control" style="width:200px; height:30px; text-transform:uppercase;" maxlength="50" readonly="readonly" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form>
